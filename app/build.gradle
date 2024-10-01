@@ -248,13 +248,12 @@ dependencies {
 }
 
 // org.fdroid.fdroid.updater.UpdateServiceTest needs app-full-debug.apk
-//android.productFlavors.all { flavor ->
-//    if (flavor.name == "full") {
-//        project.afterEvaluate { project ->
-//            def dep = tasks.getByName("assembleFullDebug")
-//            project.tasks.withType(Test) { task ->
-//                task.dependsOn dep
-//            }
-//        }
-//    }
-//}
+android.productFlavors.all { flavor ->
+    if (flavor.name == "full") {
+        project.afterEvaluate { project ->
+            def dep = tasks.getByName("assembleFullTamerPlatfromDebug")
+            project.tasks.withType(Test) { task -> task.dependsOn dep
+            }
+        }
+    }
+}
